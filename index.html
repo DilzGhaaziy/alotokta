@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Niluh Erma & Komang Hendra</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'wedding-bg': '#fcfaf5',
+                        'wedding-gold': '#a68a5b',
+                        'wedding-dark': '#4a4138',
+                        'wedding-accent': '#8e9c80',
+                    },
+                    fontFamily: {
+                        'serif': ['"Cormorant Garamond"', 'serif'],
+                        'script': ['"Great Vibes"', 'cursive'],
+                        'sans': ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #fcfaf5;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Scroll Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.5, 0, 0, 1), transform 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .fade-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Cover Overlay Transition */
+        #cover-page {
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+        }
+        
+        .cover-hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Floral Decoration Helper */
+        .floral-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0C30 16.5685 16.5685 30 0 30C16.5685 30 30 43.4315 30 60C30 43.4315 43.4315 30 60 30C43.4315 30 30 16.5685 30 0Z' fill='%23a68a5b' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        /* Music Button Spin */
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .spin-slow {
+            animation: spin-slow 4s linear infinite;
+        }
+        
+        .glass-panel {
+            background: rgba(252, 250, 245, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(166, 138, 91, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans text-wedding-dark antialiased selection:bg-wedding-gold selection:text-white relative">
+
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-wedding-march-14.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Cover Page -->
+    <section id="cover-page" class="fixed inset-0 z-50 flex items-center justify-center bg-wedding-bg floral-bg">
+        <div class="text-center px-6 max-w-lg w-full glass-panel p-10 rounded-2xl shadow-xl">
+            <h3 class="font-serif text-xl md:text-2xl tracking-widest text-wedding-gold mb-4 uppercase">The Wedding Of</h3>
+            <h1 class="font-script text-5xl md:text-7xl text-wedding-dark mb-6 mt-4">Erma & Hendra</h1>
+            <p class="font-sans text-sm md:text-base mb-8 text-gray-600">Jumat, 24 Juli 2026</p>
+            
+            <p class="font-sans text-xs text-gray-500 mb-4">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+            <div class="font-serif text-lg font-semibold border-b-2 border-wedding-gold inline-block pb-1 mb-8">Tamu Undangan</div>
+            
+            <br>
+            <button onclick="openInvitation()" class="inline-flex items-center gap-2 bg-wedding-gold text-white px-8 py-3 rounded-full font-sans text-sm tracking-widest uppercase hover:bg-wedding-dark transition-colors duration-300 shadow-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"></path></svg>
+                Buka Undangan
+            </button>
+        </div>
+    </section>
+
+    <!-- Floating Music Controller -->
+    <button id="music-btn" class="fixed bottom-6 right-6 z-40 bg-wedding-gold text-white p-3 rounded-full shadow-lg hidden" onclick="toggleMusic()">
+        <svg id="music-icon" class="w-6 h-6 spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+    </button>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 floral-bg">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-wedding-bg z-0 pointer-events-none"></div>
+        
+        <div class="z-10 fade-up">
+            <h4 class="font-sans text-sm md:text-base tracking-[0.3em] text-wedding-gold mb-6 uppercase">Pernikahan Suci</h4>
+            <div class="w-48 h-48 md:w-64 md:h-64 mx-auto mb-8 rounded-full overflow-hidden border-4 border-wedding-gold shadow-2xl relative">
+                <img src="https://placehold.co/400x400/4a4138/fcfaf5?text=Erma+%26+Hendra" alt="Erma & Hendra" class="object-cover w-full h-full hover:scale-105 transition-transform duration-700">
+            </div>
+            <h1 class="font-script text-6xl md:text-8xl text-wedding-dark mb-4 drop-shadow-sm">Niluh Erma</h1>
+            <span class="font-script text-4xl text-wedding-gold">&</span>
+            <h1 class="font-script text-6xl md:text-8xl text-wedding-dark mt-4 mb-8 drop-shadow-sm">Komang Hendra</h1>
+            
+            <p class="font-serif text-lg md:text-xl italic text-gray-700 mb-8 max-w-2xl mx-auto px-4">
+                "Kami mengundang Anda untuk merayakan cinta dan persatuan kami."
+            </p>
+        </div>
+    </header>
+
+    <!-- Quote Section -->
+    <section class="py-20 px-6 bg-white text-center">
+        <div class="max-w-3xl mx-auto fade-up">
+            <svg class="w-10 h-10 mx-auto text-wedding-gold mb-6 opacity-60" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path></svg>
+            <p class="font-serif text-xl md:text-2xl leading-relaxed text-wedding-dark italic mb-6">
+                "Oleh karena engkau telah memegang tanganku, maka aku pun mengharapkan keselamatan, semoga engkau hidup bersamaku hingga mencapai usia senja..."
+            </p>
+            <h3 class="font-sans text-sm tracking-widest text-wedding-gold uppercase font-bold">— Rg Weda X.85.36 —</h3>
+        </div>
+    </section>
+
+    <!-- Couple Profiles -->
+    <section class="py-24 px-4 bg-wedding-bg floral-bg">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16 fade-up">
+                <h2 class="font-serif text-4xl text-wedding-dark mb-2">Mempelai</h2>
+                <div class="w-16 h-1 bg-wedding-gold mx-auto"></div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-8">
+                <!-- Bride -->
+                <div class="flex-1 text-center fade-up glass-panel p-8 rounded-t-full rounded-b-2xl shadow-lg border-t-8 border-t-wedding-gold">
+                    <img src="https://placehold.co/300x400/8e9c80/fcfaf5?text=Luh+Erma" alt="Luh Erma Susilawati" class="w-48 h-48 md:w-56 md:h-56 mx-auto rounded-full object-cover mb-6 border-4 border-white shadow-md">
+                    <h3 class="font-script text-4xl text-wedding-dark mb-2">Luh Erma Susilawati</h3>
+                    <p class="font-sans text-sm text-gray-600 mb-4">Putri dari Bapak [Nama Ayah]<br>& Ibu [Nama Ibu]</p>
+                </div>
+
+                <!-- Divider -->
+                <div class="font-script text-6xl text-wedding-gold fade-up">&</div>
+
+                <!-- Groom -->
+                <div class="flex-1 text-center fade-up glass-panel p-8 rounded-t-full rounded-b-2xl shadow-lg border-t-8 border-t-wedding-gold">
+                    <img src="https://placehold.co/300x400/4a4138/fcfaf5?text=I+Nyoman+Hendra" alt="I Nyoman Hendra Rismawan" class="w-48 h-48 md:w-56 md:h-56 mx-auto rounded-full object-cover mb-6 border-4 border-white shadow-md">
+                    <h3 class="font-script text-4xl text-wedding-dark mb-2">I Nyoman Hendra Rismawan</h3>
+                    <p class="font-sans text-sm text-gray-600 mb-4">Putra dari Bapak [Nama Ayah]<br>& Ibu [Nama Ibu]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details & Countdown -->
+    <section class="py-24 px-6 bg-white relative">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="fade-up mb-12">
+                <h2 class="font-serif text-4xl text-wedding-dark mb-2">Waktu & Tempat</h2>
+                <div class="w-16 h-1 bg-wedding-gold mx-auto mb-6"></div>
+                <p class="font-sans text-gray-600 max-w-lg mx-auto">Dengan memohon rahmat dan ridho Tuhan Yang Maha Esa, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan kami.</p>
+            </div>
+
+            <div class="bg-wedding-bg p-8 md:p-12 rounded-2xl shadow-lg border border-gray-100 fade-up">
+                <div class="mb-8">
+                    <h3 class="font-serif text-2xl font-semibold text-wedding-gold mb-2">Resepsi Pernikahan</h3>
+                    <p class="font-sans text-xl mb-1">Jumat, 24 Juli 2026</p>
+                    <p class="font-sans text-gray-600 mb-4">Pukul 18.00 WIB - Selesai</p>
+                    
+                    <div class="mt-6 mb-6 px-4 py-4 bg-white rounded-lg shadow-sm max-w-md mx-auto">
+                        <svg class="w-6 h-6 mx-auto text-wedding-accent mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <p class="font-sans font-medium text-wedding-dark">Desa Sidowaluyo</p>
+                        <p class="font-sans text-sm text-gray-500">Kec. Sidomulyo, Kab. Lampung Selatan</p>
+                    </div>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="mt-12">
+                    <h4 class="font-sans text-sm tracking-[0.2em] uppercase text-wedding-gold mb-6">Menuju Hari Bahagia</h4>
+                    <div class="flex justify-center gap-3 md:gap-6" id="countdown">
+                        <div class="bg-white border border-wedding-gold/30 w-16 h-16 md:w-24 md:h-24 flex flex-col items-center justify-center rounded-xl shadow-sm">
+                            <span id="days" class="font-serif text-2xl md:text-4xl text-wedding-dark font-bold">00</span>
+                            <span class="font-sans text-[10px] md:text-xs uppercase text-gray-500">Hari</span>
+                        </div>
+                        <div class="bg-white border border-wedding-gold/30 w-16 h-16 md:w-24 md:h-24 flex flex-col items-center justify-center rounded-xl shadow-sm">
+                            <span id="hours" class="font-serif text-2xl md:text-4xl text-wedding-dark font-bold">00</span>
+                            <span class="font-sans text-[10px] md:text-xs uppercase text-gray-500">Jam</span>
+                        </div>
+                        <div class="bg-white border border-wedding-gold/30 w-16 h-16 md:w-24 md:h-24 flex flex-col items-center justify-center rounded-xl shadow-sm">
+                            <span id="minutes" class="font-serif text-2xl md:text-4xl text-wedding-dark font-bold">00</span>
+                            <span class="font-sans text-[10px] md:text-xs uppercase text-gray-500">Menit</span>
+                        </div>
+                        <div class="bg-white border border-wedding-gold/30 w-16 h-16 md:w-24 md:h-24 flex flex-col items-center justify-center rounded-xl shadow-sm">
+                            <span id="seconds" class="font-serif text-2xl md:text-4xl text-wedding-accent font-bold">00</span>
+                            <span class="font-sans text-[10px] md:text-xs uppercase text-gray-500">Detik</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="py-24 px-4 bg-wedding-bg floral-bg">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-up">
+                <h2 class="font-serif text-4xl text-wedding-dark mb-2">Galeri Momen</h2>
+                <div class="w-16 h-1 bg-wedding-gold mx-auto mb-4"></div>
+                <p class="font-sans text-gray-600">Momen kebersamaan kami</p>
+            </div>
+
+            <!-- CSS Grid for Gallery -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 fade-up">
+                <div class="aspect-square overflow-hidden rounded-lg shadow-sm">
+                    <img src="https://placehold.co/600x600/a68a5b/ffffff?text=Momen+1" alt="Galeri 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-sm">
+                    <img src="https://placehold.co/600x600/8e9c80/ffffff?text=Momen+2" alt="Galeri 2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-sm">
+                    <img src="https://placehold.co/600x600/4a4138/ffffff?text=Momen+3" alt="Galeri 3" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-sm md:col-span-2">
+                    <img src="https://placehold.co/1200x600/fcfaf5/4a4138?text=Momen+Spesial" alt="Galeri 4" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="aspect-square overflow-hidden rounded-lg shadow-sm">
+                    <img src="https://placehold.co/600x600/a68a5b/ffffff?text=Momen+5" alt="Galeri 5" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-wedding-dark text-white py-16 px-6 text-center">
+        <div class="max-w-2xl mx-auto fade-up">
+            <h2 class="font-script text-5xl mb-6 text-wedding-bg">Terima Kasih</h2>
+            <p class="font-sans text-sm text-gray-300 mb-8 leading-relaxed">
+                Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
+            </p>
+            <div class="font-serif text-lg text-wedding-gold mb-2">Kel. Bpk [Nama Ayah Erma] & Ibu [Nama Ibu Erma]</div>
+            <div class="font-serif text-lg text-wedding-gold mb-10">Kel. Bpk [Nama Ayah Hendra] & Ibu [Nama Ibu Hendra]</div>
+            
+            <h3 class="font-script text-3xl mb-2 text-wedding-bg">Erma & Hendra</h3>
+            <p class="font-sans text-xs text-gray-500 mt-8">© 2026 Digital Wedding Invitation. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // DOM Elements
+        const coverPage = document.getElementById('cover-page');
+        const bgMusic = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-btn');
+        const musicIcon = document.getElementById('music-icon');
+        let isMusicPlaying = false;
+
+        // --- Cover & Music Logic ---
+        function openInvitation() {
+            // Hide Cover
+            coverPage.classList.add('cover-hidden');
+            
+            // Allow body to scroll
+            document.body.style.overflowY = 'auto';
+            
+            // Show Music Button
+            musicBtn.classList.remove('hidden');
+            
+            // Play Music
+            playMusic();
+        }
+
+        function playMusic() {
+            bgMusic.play().then(() => {
+                isMusicPlaying = true;
+                musicIcon.classList.add('spin-slow');
+            }).catch(err => {
+                console.log("Auto-play prevented by browser. User interaction needed.");
+            });
+        }
+
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                musicIcon.classList.remove('spin-slow');
+            } else {
+                bgMusic.play();
+                musicIcon.classList.add('spin-slow');
+            }
+            isMusicPlaying = !isMusicPlaying;
+        }
+
+        // Initially prevent scroll while on cover
+        document.body.style.overflowY = 'hidden';
+
+        // --- Countdown Timer Logic ---
+        // Target Date: July 24, 2026 18:00:00 WIB
+        const targetDate = new Date("Jul 24, 2026 18:00:00").getTime();
+
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }, 1000);
+
+        // --- Scroll Animation (Intersection Observer) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Trigger when 15% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-up');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
