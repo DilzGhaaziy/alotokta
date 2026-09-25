@@ -226,17 +226,18 @@
             <div class="text-center px-6 max-w-sm w-full cover-panel-maroon p-5 rounded-2xl shadow-2xl text-white">
                 <h3 class="font-serif text-sm tracking-widest text-[#D9BA1C] mb-1 uppercase font-semibold">The Wedding Of</h3>
                 
-                <!-- Foto Pill Shape (Tegak) 500% di bawah "The Wedding Of" -->
+                <!-- Foto Pill Shape (Tegak) -->
                 <div class="my-2 flex justify-center">
-                    <img src="https://i.ibb.co.com/vCzTxkQ3/Whats-App-Image-2026-09-25-at-12-39-00.jpg" alt="Couple Cover" class="w-72 h-96 object-cover border-2 border-[#D9BA1C] shadow-md" style="border-radius: 9999px;">
+                    <img src="https://i.ibb.co.com/vCzTxkQ3/Whats-App-Image-2026-09-25-at-12-39-00.jpg" alt="Couple Cover" class="w-64 h-84 object-cover border-2 border-[#D9BA1C] shadow-md" style="border-radius: 9999px;">
                 </div>
 
-                <h1 class="font-script text-3xl text-white mb-1 mt-1 drop-shadow-md">Alot & Okta</h1>
+                <!-- Teks Alot & Okta Diperbesar (text-5xl) -->
+                <h1 class="font-script text-5xl text-white mb-1 mt-1 drop-shadow-md">Alot & Okta</h1>
                 <p class="font-sans text-[11px] mb-2 text-gray-200">Rabu, 7 Oktober 2026</p>
                 
                 <p class="font-sans text-[10px] text-gray-300 mb-0.5">Kepada Yth. Bapak/Ibu/Saudara/i</p>
-                <!-- Nama Tamu Undangan yang dinamis dari URL ?to= -->
-                <div id="guest-name" class="font-serif text-xs font-semibold border-b-2 border-[#D9BA1C] text-[#D9BA1C] inline-block pb-0.5 mb-3">Tamu Undangan</div>
+                <!-- Teks Tamu Undangan Diperbesar (text-base) -->
+                <div id="guest-name" class="font-serif text-base font-semibold border-b-2 border-[#D9BA1C] text-[#D9BA1C] inline-block pb-0.5 mb-3">Tamu Undangan</div>
                 
                 <br>
                 <button onclick="openInvitation()" class="inline-flex items-center gap-2 bg-[#D9BA1C] text-wedding-dark px-5 py-2 rounded-full font-sans text-[11px] tracking-widest uppercase hover:bg-white transition-colors duration-300 shadow-lg cursor-pointer font-bold">
@@ -502,7 +503,6 @@
             const urlParams = new URLSearchParams(window.location.search);
             const guestName = urlParams.get('to');
             if (guestName) {
-                // Mengganti spasi '+' atau format URI menjadi teks normal
                 document.getElementById('guest-name').innerText = decodeURIComponent(guestName.replace(/\+/g, ' '));
             }
         });
