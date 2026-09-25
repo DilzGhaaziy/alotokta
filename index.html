@@ -136,7 +136,7 @@
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
         }
 
-        /* Quote Section Background & Blending (Diperpanjang paddingnya) */
+        /* Quote Section Background & Blending */
         .quote-section-bg {
             position: relative;
             background-image: url('https://i.ibb.co.com/fYj0dfbP/kompress5.jpg');
@@ -235,7 +235,8 @@
                 <p class="font-sans text-[11px] mb-2 text-gray-200">Rabu, 7 Oktober 2026</p>
                 
                 <p class="font-sans text-[10px] text-gray-300 mb-0.5">Kepada Yth. Bapak/Ibu/Saudara/i</p>
-                <div class="font-serif text-xs font-semibold border-b-2 border-[#D9BA1C] text-[#D9BA1C] inline-block pb-0.5 mb-3">Tamu Undangan</div>
+                <!-- Nama Tamu Undangan yang dinamis dari URL ?to= -->
+                <div id="guest-name" class="font-serif text-xs font-semibold border-b-2 border-[#D9BA1C] text-[#D9BA1C] inline-block pb-0.5 mb-3">Tamu Undangan</div>
                 
                 <br>
                 <button onclick="openInvitation()" class="inline-flex items-center gap-2 bg-[#D9BA1C] text-wedding-dark px-5 py-2 rounded-full font-sans text-[11px] tracking-widest uppercase hover:bg-white transition-colors duration-300 shadow-lg cursor-pointer font-bold">
@@ -282,12 +283,11 @@
             </div>
         </header>
 
-        <!-- Quote Section (Diperpanjang ukuran ruangnya dengan py-28) -->
+        <!-- Quote Section -->
         <section class="py-28 px-6 text-center quote-section-bg relative z-20 -mt-16">
             <div class="max-w-xs mx-auto fade-up relative z-10 pt-6">
                 <svg class="w-8 h-8 mx-auto text-wedding-gold mb-4 opacity-90 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path></svg>
                 
-                <!-- Teks Sanskerta Baru -->
                 <p class="font-serif text-base leading-relaxed text-white italic mb-3 drop-shadow-md">
                     Ihaiva stam ma vi yaustam.<br>
                     Visvam ayur vyasnutam.<br>
@@ -296,7 +296,6 @@
                 </p>
                 <h3 class="font-sans text-[11px] tracking-widest text-[#D9BA1C] uppercase font-bold drop-shadow-md mb-6">—Rgveda : X.85.42—</h3>
 
-                <!-- Teks Terjemahan Baru -->
                 <p class="font-sans text-xs leading-relaxed text-gray-200 italic mb-4 drop-shadow-md">
                     "Wahai pasangan suami-istri, semoga kalian tetap bersatu dan tidak pernah terpisahkan. <br>Semoga kalian mencapai hidup penuh kebahagiaan dan panjang umur.<br>Semoga kalian tinggal di rumah yang penuh kegembiraan bersama anak-anak dan cucu."
                 </p>
@@ -336,7 +335,6 @@
                     <h2 class="font-serif text-3xl mb-2" style="color: #D9BA1C; text-shadow: 0 1px 3px rgba(0,0,0,0.6);">Waktu & Tempat</h2>
                     <div class="w-12 h-1 bg-[#D9BA1C] mx-auto mb-4"></div>
                     
-                    <!-- Teks OM SWASTYASTU dengan font size lebih besar di atas kalimat undangan -->
                     <h3 class="font-serif text-lg font-bold tracking-widest text-[#D9BA1C] mb-3 drop-shadow">OM SWASTYASTU</h3>
                     
                     <p class="font-sans text-[11px] text-gray-100 leading-relaxed drop-shadow uppercase font-medium">ATAS ASUNG KERTHA WARA NUGRAHA IDA SANG HYANG WIDHI WASA / TUHAN YANG MAHA ESA, KAMI BERMAKSUD MENGUNDANG BAPAK / IBU / SAUDARA / I PADA UPACARA MANUSA YADNYA PAWIWAHAN PUTRA DAN PUTRI KAMI.</p>
@@ -499,6 +497,16 @@
 
     <!-- Scripts -->
     <script>
+        // Tangkap parameter URL ?to= untuk nama tamu undangan
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestName = urlParams.get('to');
+            if (guestName) {
+                // Mengganti spasi '+' atau format URI menjadi teks normal
+                document.getElementById('guest-name').innerText = decodeURIComponent(guestName.replace(/\+/g, ' '));
+            }
+        });
+
         const coverPage = document.getElementById('cover-page');
         const bgMusic = document.getElementById('bg-music');
         const musicBtn = document.getElementById('music-btn');
