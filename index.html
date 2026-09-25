@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Josefin+Sans:wght@700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     
     <script>
@@ -25,6 +25,7 @@
                         'serif': ['"Cormorant Garamond"', 'serif'],
                         'script': ['"Great Vibes"', 'cursive'],
                         'sans': ['"Montserrat"', 'sans-serif'],
+                        'josefin': ['"Josefin Sans"', 'sans-serif'],
                     }
                 }
             }
@@ -327,9 +328,8 @@
             </div>
         </section>
 
-        <!-- Event Details & Countdown (Background digelapkan 50% dengan overlay hitam) -->
+        <!-- Event Details & Countdown -->
         <section class="py-20 px-6 event-section-bg relative">
-            <!-- Overlay Hitam 50% untuk menggelapkan background -->
             <div class="absolute inset-0 bg-black/50 z-0"></div>
 
             <div class="max-w-xs mx-auto text-center relative z-10">
@@ -390,11 +390,13 @@
             </div>
         </section>
 
-        <!-- Photo Gallery -->
+        <!-- Photo Gallery (Font Josefin Sans Bold pada GALERI MOMEN) -->
         <section class="py-20 px-6 gallery-section-bg relative">
+            <div class="absolute inset-0 bg-black/50 z-0"></div>
+
             <div class="max-w-xs mx-auto relative z-10">
                 <div class="text-center mb-10 fade-up">
-                    <h2 class="font-serif text-3xl mb-2" style="color: #D9BA1C; text-shadow: 0 1px 3px rgba(0,0,0,0.6);">Galeri Momen</h2>
+                    <h2 class="font-josefin text-3xl font-bold mb-2 text-[#D9BA1C] tracking-wider" style="text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);">GALERI MOMEN</h2>
                     <div class="w-12 h-1 bg-[#D9BA1C] mx-auto mb-2"></div>
                     <p class="font-sans text-xs text-gray-100 drop-shadow">Momen kebersamaan kami</p>
                 </div>
