@@ -136,15 +136,15 @@
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
         }
 
-        /* Quote Section Background & Blending */
+        /* Quote Section Background & Blending (Diperpanjang paddingnya) */
         .quote-section-bg {
             position: relative;
             background-image: url('https://i.ibb.co.com/fYj0dfbP/kompress5.jpg');
             background-size: 100% 100%;
             background-position: center;
             background-repeat: no-repeat;
-            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
-            mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 100%);
         }
 
         /* Couple Profiles Background */
@@ -223,23 +223,29 @@
         <!-- Cover Page (Panel Awal dengan Background, Salju, & Panel Merah Marun) -->
         <section id="cover-page" class="flex items-center justify-center px-4">
             <canvas id="snow-canvas"></canvas>
-            <div class="text-center px-6 max-w-sm w-full cover-panel-maroon p-8 rounded-2xl shadow-2xl text-white">
-                <h3 class="font-serif text-lg tracking-widest text-[#D9BA1C] mb-3 uppercase font-semibold">The Wedding Of</h3>
-                <h1 class="font-script text-5xl text-white mb-4 mt-2 drop-shadow-md">Alot & Okta</h1>
-                <p class="font-sans text-sm mb-6 text-gray-200">Rabu, 7 Oktober 2026</p>
+            <div class="text-center px-6 max-w-sm w-full cover-panel-maroon p-5 rounded-2xl shadow-2xl text-white">
+                <h3 class="font-serif text-sm tracking-widest text-[#D9BA1C] mb-1 uppercase font-semibold">The Wedding Of</h3>
                 
-                <p class="font-sans text-xs text-gray-300 mb-2">Kepada Yth. Bapak/Ibu/Saudara/i</p>
-                <div class="font-serif text-base font-semibold border-b-2 border-[#D9BA1C] text-[#D9BA1C] inline-block pb-1 mb-6">Tamu Undangan</div>
+                <!-- Foto Pill Shape (Tegak) 500% di bawah "The Wedding Of" -->
+                <div class="my-2 flex justify-center">
+                    <img src="https://i.ibb.co.com/vCzTxkQ3/Whats-App-Image-2026-09-25-at-12-39-00.jpg" alt="Couple Cover" class="w-72 h-96 object-cover border-2 border-[#D9BA1C] shadow-md" style="border-radius: 9999px;">
+                </div>
+
+                <h1 class="font-script text-3xl text-white mb-1 mt-1 drop-shadow-md">Alot & Okta</h1>
+                <p class="font-sans text-[11px] mb-2 text-gray-200">Rabu, 7 Oktober 2026</p>
+                
+                <p class="font-sans text-[10px] text-gray-300 mb-0.5">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+                <div class="font-serif text-xs font-semibold border-b-2 border-[#D9BA1C] text-[#D9BA1C] inline-block pb-0.5 mb-3">Tamu Undangan</div>
                 
                 <br>
-                <button onclick="openInvitation()" class="inline-flex items-center gap-2 bg-[#D9BA1C] text-wedding-dark px-6 py-3 rounded-full font-sans text-xs tracking-widest uppercase hover:bg-white transition-colors duration-300 shadow-lg cursor-pointer font-bold">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"></path></svg>
+                <button onclick="openInvitation()" class="inline-flex items-center gap-2 bg-[#D9BA1C] text-wedding-dark px-5 py-2 rounded-full font-sans text-[11px] tracking-widest uppercase hover:bg-white transition-colors duration-300 shadow-lg cursor-pointer font-bold">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"></path></svg>
                     Buka Undangan
                 </button>
             </div>
         </section>
 
-        <!-- Floating GIFT Button & Music Controller (Di atas tombol musik) -->
+        <!-- Floating GIFT Button & Music Controller -->
         <div id="floating-buttons" class="fixed bottom-6 right-6 z-40 flex flex-col gap-3 items-end hidden">
             <!-- Tombol GIFT -->
             <button class="bg-[#D9BA1C] text-wedding-dark px-4 py-2.5 rounded-full shadow-lg font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 hover:bg-white transition-all cursor-pointer border border-wedding-dark/20" onclick="openGiftModal()">
@@ -253,32 +259,47 @@
         </div>
 
         <!-- Hero Section -->
-        <header id="hero-section" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 text-white pb-16">
+        <header id="hero-section" class="relative min-h-screen flex flex-col justify-between text-center px-6 text-white py-12">
             <div class="hero-slideshow">
                 <div class="hero-slide active" style="background-image: url('https://i.ibb.co.com/Df6mYGnP/Whats-App-Image-2026-09-25-at-12-26-00.jpg');"></div>
                 <div class="hero-slide" style="background-image: url('https://i.ibb.co.com/vCzTxkQ3/Whats-App-Image-2026-09-25-at-12-39-00.jpg');"></div>
                 <div class="hero-slide" style="background-image: url('https://i.ibb.co.com/7tLKRb5b/Whats-App-Image-2026-09-25-at-12-39-49.jpg');"></div>
             </div>
 
-            <div class="z-10 fade-up py-12">
-                <h4 class="font-sans text-xs tracking-[0.3em] text-white mb-4 uppercase font-bold hero-heavy-shadow">Pernikahan Suci</h4>
-                <h1 class="font-script text-5xl hero-custom-gold mb-2">De Alot Tumbuan</h1>
-                <span class="font-script text-3xl text-white hero-heavy-shadow">&</span>
-                <h1 class="font-script text-5xl hero-custom-gold mt-2 mb-6">Wayan Okta Vitaloka</h1>
-                <p class="font-serif text-base italic text-gray-100 mb-6 max-w-xs mx-auto hero-heavy-shadow">
-                    "Kami mengundang Anda untuk merayakan cinta dan persatuan kami."
+            <!-- Bagian Atas Hero Section: PERNIKAHAN SUCI -->
+            <div class="z-10 fade-up pt-4">
+                <h4 class="font-sans text-xs tracking-[0.3em] text-white uppercase font-bold hero-heavy-shadow">PERNIKAHAN SUCI</h4>
+            </div>
+
+            <!-- Bagian Bawah Hero Section: Nama Mempelai & Kalimat Undangan -->
+            <div class="z-10 fade-up pb-8">
+                <h1 class="font-script text-4xl hero-custom-gold mb-1">De Alot Tumbuan</h1>
+                <span class="font-script text-2xl text-white hero-heavy-shadow">&</span>
+                <h1 class="font-script text-4xl hero-custom-gold mt-1 mb-4">Wayan Okta Vitaloka</h1>
+                <p class="font-serif text-sm italic text-gray-100 max-w-xs mx-auto hero-heavy-shadow">
+                    Kami mengundang Anda untuk merayakan cinta dan persatuan kami.
                 </p>
             </div>
         </header>
 
-        <!-- Quote Section -->
-        <section class="py-20 px-6 text-center quote-section-bg relative z-20 -mt-16">
-            <div class="max-w-xs mx-auto fade-up relative z-10 pt-4">
+        <!-- Quote Section (Diperpanjang ukuran ruangnya dengan py-28) -->
+        <section class="py-28 px-6 text-center quote-section-bg relative z-20 -mt-16">
+            <div class="max-w-xs mx-auto fade-up relative z-10 pt-6">
                 <svg class="w-8 h-8 mx-auto text-wedding-gold mb-4 opacity-90 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path></svg>
-                <p class="font-serif text-lg leading-relaxed text-white italic mb-4 drop-shadow-md">
-                    "Oleh karena engkau telah memegang tanganku, maka aku pun mengharapkan keselamatan, semoga engkau hidup bersamaku hingga mencapai usia senja..."
+                
+                <!-- Teks Sanskerta Baru -->
+                <p class="font-serif text-base leading-relaxed text-white italic mb-3 drop-shadow-md">
+                    Ihaiva stam ma vi yaustam.<br>
+                    Visvam ayur vyasnutam.<br>
+                    Kridantau putrair naptrbhih.<br>
+                    Modamanau sve grhe.
                 </p>
-                <h3 class="font-sans text-xs tracking-widest text-[#D9BA1C] uppercase font-bold drop-shadow-md">— Rg Weda X.85.36 —</h3>
+                <h3 class="font-sans text-[11px] tracking-widest text-[#D9BA1C] uppercase font-bold drop-shadow-md mb-6">—Rgveda : X.85.42—</h3>
+
+                <!-- Teks Terjemahan Baru -->
+                <p class="font-sans text-xs leading-relaxed text-gray-200 italic mb-4 drop-shadow-md">
+                    "Wahai pasangan suami-istri, semoga kalian tetap bersatu dan tidak pernah terpisahkan. <br>Semoga kalian mencapai hidup penuh kebahagiaan dan panjang umur.<br>Semoga kalian tinggal di rumah yang penuh kegembiraan bersama anak-anak dan cucu."
+                </p>
             </div>
         </section>
 
@@ -314,7 +335,11 @@
                 <div class="fade-up mb-10">
                     <h2 class="font-serif text-3xl mb-2" style="color: #D9BA1C; text-shadow: 0 1px 3px rgba(0,0,0,0.6);">Waktu & Tempat</h2>
                     <div class="w-12 h-1 bg-[#D9BA1C] mx-auto mb-4"></div>
-                    <p class="font-sans text-xs text-gray-100 leading-relaxed drop-shadow">Dengan memohon rahmat dan ridho Tuhan Yang Maha Esa, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan kami.</p>
+                    
+                    <!-- Teks OM SWASTYASTU dengan font size lebih besar di atas kalimat undangan -->
+                    <h3 class="font-serif text-lg font-bold tracking-widest text-[#D9BA1C] mb-3 drop-shadow">OM SWASTYASTU</h3>
+                    
+                    <p class="font-sans text-[11px] text-gray-100 leading-relaxed drop-shadow uppercase font-medium">ATAS ASUNG KERTHA WARA NUGRAHA IDA SANG HYANG WIDHI WASA / TUHAN YANG MAHA ESA, KAMI BERMAKSUD MENGUNDANG BAPAK / IBU / SAUDARA / I PADA UPACARA MANUSA YADNYA PAWIWAHAN PUTRA DAN PUTRI KAMI.</p>
                 </div>
 
                 <div class="event-box-maroon p-6 rounded-2xl shadow-2xl fade-up text-white">
@@ -330,7 +355,15 @@
                         </div>
                     </div>
 
-                    <div class="mt-8">
+                    <!-- Tombol Lihat Lokasi berwarna #D9BA1C -->
+                    <div class="mb-6">
+                        <a href="https://maps.app.goo.gl/62imvAxdpRBRfbmw6" target="_blank" class="inline-flex items-center gap-2 bg-[#D9BA1C] text-wedding-dark px-5 py-2.5 rounded-full font-sans text-xs font-bold uppercase tracking-wider hover:bg-white transition-colors duration-300 shadow-md">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            Lihat Lokasi
+                        </a>
+                    </div>
+
+                    <div class="mt-4">
                         <h4 class="font-sans text-[11px] tracking-[0.2em] uppercase text-[#D9BA1C] mb-4 font-bold">Menuju Hari Bahagia</h4>
                         <div class="flex justify-center gap-2" id="countdown">
                             <div class="bg-black/40 border border-[#D9BA1C] w-14 h-14 flex flex-col items-center justify-center rounded-lg shadow-sm">
@@ -439,20 +472,21 @@
                 </button>
             </div>
 
-            <!-- Container Kartu Hasil (chip.webp / dompet.webp) -->
+            <!-- Container Kartu Hasil -->
             <div id="gift-card-container" class="hidden">
                 <div class="relative w-full aspect-[1.58/1] rounded-2xl overflow-hidden shadow-xl border-2 border-[#D9BA1C] p-4 flex flex-col justify-between" id="card-bg-wrapper">
                     <img id="card-bg-img" src="" alt="Card Background" class="absolute inset-0 w-full h-full object-cover z-0">
-                    <div class="absolute inset-0 bg-black/40 z-0"></div> <!-- Overlay gelap tipis agar teks kontras -->
+                    <div class="absolute inset-0 bg-black/40 z-0"></div>
 
-                    <!-- Pojok Kanan Atas: Logo Bank / Dompet Digi -->
-                    <div class="relative z-10 flex justify-end">
-                        <img id="card-logo-img" src="" alt="Logo" class="h-9 max-w-[110px] object-contain drop-shadow-md">
+                    <!-- Atas: Logo Bank / Dompet Digi & Teks Tengah -->
+                    <div class="relative z-10 flex justify-between items-center">
+                        <span id="card-bank-title" class="font-serif text-sm font-bold tracking-widest text-[#D9BA1C] drop-shadow-md"></span>
+                        <img id="card-logo-img" src="" alt="Logo" class="h-8 max-w-[100px] object-contain drop-shadow-md">
                     </div>
 
-                    <!-- Pojok Kiri Bawah: Nama Pemilik & Nomor Rekening / Dompet (Ukuran Diperbesar) -->
+                    <!-- Bawah: Nama Pemilik & Nomor Rekening / Dompet -->
                     <div class="relative z-10 mt-auto">
-                        <p id="card-name" class="font-sans text-base font-bold text-white tracking-wide drop-shadow-md"></p>
+                        <p id="card-name" class="font-sans text-base font-bold text-white tracking-wide drop-shadow-md uppercase"></p>
                         <div class="flex items-center justify-between gap-2 mt-1.5">
                             <span id="card-number" class="font-mono text-xl font-bold text-[#D9BA1C] tracking-wider drop-shadow-md"></span>
                             <button onclick="copyToClipboard()" class="bg-[#D9BA1C] hover:bg-white text-wedding-dark text-xs uppercase font-bold px-3 py-1.5 rounded shadow transition-colors">Salin</button>
@@ -474,7 +508,6 @@
         const floatingButtons = document.getElementById('floating-buttons');
         let isMusicPlaying = true;
 
-        // Auto-play attempt on load
         window.addEventListener('DOMContentLoaded', () => {
             bgMusic.play().catch(() => {
                 isMusicPlaying = false;
@@ -508,7 +541,6 @@
             isMusicPlaying = !isMusicPlaying;
         }
 
-        // Gift Modal Handlers
         function openGiftModal() {
             const modal = document.getElementById('gift-modal');
             modal.classList.remove('hidden');
@@ -525,11 +557,11 @@
             }, 300);
         }
 
-        // Toggle Pilihan Gift (Rekening vs Dompet Digital)
         function showGiftDetail(type) {
             const container = document.getElementById('gift-card-container');
             const bgImg = document.getElementById('card-bg-img');
             const logoImg = document.getElementById('card-logo-img');
+            const bankTitleEl = document.getElementById('card-bank-title');
             const nameEl = document.getElementById('card-name');
             const numberEl = document.getElementById('card-number');
 
@@ -538,17 +570,18 @@
             if (type === 'bank') {
                 bgImg.src = 'images/chip.webp';
                 logoImg.src = 'images/rekening.webp';
-                nameEl.innerText = 'De Alot Tumbuan';
-                numberEl.innerText = '1234567890';
+                bankTitleEl.innerText = 'BANK MANDIRI';
+                nameEl.innerText = 'DE ALOT TUMBUAN';
+                numberEl.innerText = '1140029933309';
             } else if (type === 'wallet') {
                 bgImg.src = 'images/dompet.webp';
                 logoImg.src = 'images/dompetdigi.webp';
+                bankTitleEl.innerText = 'SEABANK';
                 nameEl.innerText = 'Wayan Okta Vitaloka';
-                numberEl.innerText = '081234567890';
+                numberEl.innerText = '901233979191';
             }
         }
 
-        // Fungsi Salin Nomor
         function copyToClipboard() {
             const numberText = document.getElementById('card-number').innerText;
             navigator.clipboard.writeText(numberText).then(() => {
@@ -558,7 +591,6 @@
             });
         }
 
-        // Snowfall Animation Script (Bulat, Berbeda Opasitas, Ringan)
         const canvas = document.getElementById('snow-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -617,7 +649,6 @@
 
         setInterval(drawSnow, 25);
 
-        // Lightbox Handler
         function openLightbox(imgSrc) {
             const modal = document.getElementById('lightbox-modal');
             const img = document.getElementById('lightbox-img');
@@ -632,7 +663,6 @@
             modal.classList.add('hidden');
         }
 
-        // Hero Slideshow Background Logic
         const slides = document.querySelectorAll('.hero-slide');
         let currentSlide = 0;
 
@@ -644,7 +674,6 @@
 
         setInterval(nextSlide, 3000);
 
-        // Countdown Timer Logic
         const targetDate = new Date("Oct 7, 2026 13:00:00").getTime();
 
         const timerInterval = setInterval(function() {
@@ -671,7 +700,6 @@
             document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
         }, 1000);
 
-        // Scroll Animation (Intersection Observer)
         document.addEventListener('DOMContentLoaded', () => {
             const observerOptions = {
                 root: mainContainer,
